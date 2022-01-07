@@ -1,0 +1,157 @@
+{
+  "stats": {
+    "suites": 0,
+    "tests": 5,
+    "passes": 5,
+    "pending": 0,
+    "failures": 0,
+    "start": "2022-01-06T13:56:49.629Z",
+    "end": "2022-01-06T13:56:52.700Z",
+    "duration": 3071,
+    "testsRegistered": 5,
+    "passPercent": 100,
+    "pendingPercent": 0,
+    "other": 0,
+    "hasOther": false,
+    "skipped": 0,
+    "hasSkipped": false
+  },
+  "results": [
+    {
+      "uuid": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+      "title": "",
+      "fullFile": "cypress/integration/regression.spec.js",
+      "file": "cypress/integration/regression.spec.js",
+      "beforeHooks": [],
+      "afterHooks": [],
+      "tests": [
+        {
+          "title": "Testcase 1",
+          "fullTitle": "Testcase 1",
+          "timedOut": null,
+          "duration": 662,
+          "state": "passed",
+          "speed": "fast",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.authenticateSession().then(response => {\n  cy.log(JSON.stringify(response.body)); //collects data about rooms\n  cy.request({\n    method: 'GET',\n    url: targets.URL_ROOMGET,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about rooms in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //collects data about clients\n  cy.request({\n    method: 'GET',\n    url: targets.URL_CLIENTGET,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about clients in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //collects data about bills\n  cy.request({\n    method: 'GET',\n    url: targets.URL_BILLGET,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about bills in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //collects data about reservations\n  cy.request({\n    method: 'GET',\n    url: targets.URL_RESERVATIONGET,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about reservations in cypress\n    cy.log(JSON.stringify(response.body));\n  });\n});",
+          "err": {},
+          "uuid": "3f89ff3b-9cf5-4547-baba-608e1e076506",
+          "parentUUID": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+          "isHook": false,
+          "skipped": false
+        },
+        {
+          "title": "Testcase 2",
+          "fullTitle": "Testcase 2",
+          "timedOut": null,
+          "duration": 574,
+          "state": "passed",
+          "speed": "fast",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.authenticateSession().then(response => {\n  cy.log(JSON.stringify(response.body)); //creates new room with data from targets.js\n  cy.request({\n    method: 'POST',\n    url: targets.URL_ROOMNEW,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase2Payload1\n  }).then(response => {\n    //shows data about new room in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //updates data in new room with data from targets.js\n  cy.request({\n    method: 'PUT',\n    url: targets.URL_ROOM3,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase2Payload2\n  }).then(response => {\n    //shows data about updated new room in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //deletes newly created room\n  cy.request({\n    method: 'DELETE',\n    url: targets.URL_ROOM3,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about performed deletion\n    cy.log(JSON.stringify(response.body));\n  });\n});",
+          "err": {},
+          "uuid": "41ecf02a-b11d-4599-a6ba-13596f08ebd3",
+          "parentUUID": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+          "isHook": false,
+          "skipped": false
+        },
+        {
+          "title": "Testcase 3",
+          "fullTitle": "Testcase 3",
+          "timedOut": null,
+          "duration": 581,
+          "state": "passed",
+          "speed": "fast",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.authenticateSession().then(response => {\n  cy.log(JSON.stringify(response.body)); //creates new client with data from targets.js\n  cy.request({\n    method: 'POST',\n    url: targets.URL_CLIENTNEW,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase3Payload1\n  }).then(response => {\n    //shows data about new client in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //updates data in new client with data from targets.js\n  cy.request({\n    method: 'PUT',\n    url: targets.URL_CLIENT3,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase3Payload2\n  }).then(response => {\n    //shows data about updated new client in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //deletes newly created room\n  cy.request({\n    method: 'DELETE',\n    url: targets.URL_CLIENT3,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about performed deletion\n    cy.log(JSON.stringify(response.body));\n  });\n});",
+          "err": {},
+          "uuid": "0509b58d-69b2-42e3-936a-8bb5da3a66d0",
+          "parentUUID": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+          "isHook": false,
+          "skipped": false
+        },
+        {
+          "title": "Testcase 4",
+          "fullTitle": "Testcase 4",
+          "timedOut": null,
+          "duration": 651,
+          "state": "passed",
+          "speed": "fast",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.authenticateSession().then(response => {\n  cy.log(JSON.stringify(response.body)); //creates new bill with data from targets.js\n  cy.request({\n    method: 'POST',\n    url: targets.URL_BILLNEW,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase4Payload1\n  }).then(response => {\n    //shows data about new bill in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //updates data in new bill with data from targets.js\n  cy.request({\n    method: 'PUT',\n    url: targets.URL_BILL2,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase4Payload2\n  }).then(response => {\n    //shows data about updated new bill in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //deletes newly created room\n  cy.request({\n    method: 'DELETE',\n    url: targets.URL_BILL2,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about performed deletion\n    cy.log(JSON.stringify(response.body));\n  });\n});",
+          "err": {},
+          "uuid": "f1b65674-774a-42ed-856c-c7c040feec6e",
+          "parentUUID": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+          "isHook": false,
+          "skipped": false
+        },
+        {
+          "title": "Testcase 5",
+          "fullTitle": "Testcase 5",
+          "timedOut": null,
+          "duration": 570,
+          "state": "passed",
+          "speed": "fast",
+          "pass": true,
+          "fail": false,
+          "pending": false,
+          "context": null,
+          "code": "cy.authenticateSession().then(response => {\n  cy.log(JSON.stringify(response.body)); //creates new reservation with data from targets.js\n  cy.request({\n    method: 'POST',\n    url: targets.URL_RESERVATIONNEW,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase5Payload1\n  }).then(response => {\n    //shows data about new reservation in cypress\n    cy.log(JSON.stringify(response.body));\n  }); //updates data in new reservation with data from targets.js\n  cy.request({\n    method: 'PUT',\n    url: targets.URL_RESERVATION2,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    },\n    body: targets.testcase5Payload2\n  }).then(response => {\n    //shows data about updated new bill in cypress\n    cy.log(JSON.stringify(response.body));\n  });\n  cy.request({\n    //deletes newly created reservation\n    method: 'DELETE',\n    url: targets.URL_RESERVATION2,\n    headers: {\n      'X-User-Auth': JSON.stringify(Cypress.env().loginToken),\n      'Content-Type': 'application/json'\n    }\n  }).then(response => {\n    //shows data about performed deletion\n    cy.log(JSON.stringify(response.body));\n  });\n});",
+          "err": {},
+          "uuid": "6efc3b6d-e145-4055-b654-6cc51ec724a1",
+          "parentUUID": "e6a73f08-6584-417f-b2c0-0f184cb3220c",
+          "isHook": false,
+          "skipped": false
+        }
+      ],
+      "suites": [],
+      "passes": [
+        "3f89ff3b-9cf5-4547-baba-608e1e076506",
+        "41ecf02a-b11d-4599-a6ba-13596f08ebd3",
+        "0509b58d-69b2-42e3-936a-8bb5da3a66d0",
+        "f1b65674-774a-42ed-856c-c7c040feec6e",
+        "6efc3b6d-e145-4055-b654-6cc51ec724a1"
+      ],
+      "failures": [],
+      "pending": [],
+      "skipped": [],
+      "duration": 3038,
+      "root": true,
+      "rootEmpty": false,
+      "_timeout": 2000
+    }
+  ],
+  "meta": {
+    "mocha": {
+      "version": "7.0.1"
+    },
+    "mochawesome": {
+      "options": {
+        "quiet": false,
+        "reportFilename": "mochawesome",
+        "saveHtml": true,
+        "saveJson": true,
+        "consoleReporter": "spec",
+        "useInlineDiffs": false,
+        "code": true
+      },
+      "version": "7.0.1"
+    },
+    "marge": {
+      "options": null,
+      "version": "6.0.1"
+    }
+  }
+}
